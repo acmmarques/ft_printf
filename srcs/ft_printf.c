@@ -6,23 +6,23 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:59:14 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/19 16:03:07 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/23 19:37:15 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void static	handle_specifier(char specifier, va_list *args, size_t *len);
+void static	handle_specifier(char specifier, va_list *args, size_t *char_count);
 
 int	ft_printf(const char *format, ...)
 {
 	va_list args;
-	size_t	len;
+	size_t	char_count;
 	size_t	i;
 	char *sp_list;
 
 
-	len = 0;
+	char_count = 0;
 	i = 0;
 	sp_list = "cspdiuxX%";
 	va_start(args, format);
@@ -31,31 +31,36 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%' && ft_strchr(sp_list, format[i + 1]))
 		{
 			i++;
-			handle_specifier(format[i], &args, &len);
+			handle_specifier(format[i], &args, &char_count);
 		}
 		else {
-			len += ft_putchar(format[i]);
+			ft_putchar(format[i], &char_count);
 		}
 		i++;
 	}
 	va_end(args);
-	return (len);
+	return (char_count);
 }
 
-void static	handle_specifier(char sp, va_list *args, size_t *len)
+void static	handle_specifier(char sp, va_list *args, size_t *char_count)
 {
 
 	char *order = "cspdiuxX%";
 	if (sp == 'c')
-		*len += ft_putchar(va_arg(*args, int)); 
-	/*
+		ft_putchar((char)va_arg(*args, int), char_count); 
 	else if (sp == 's')
-		*len += ft_putstr()
-		*/
+		ft_putstr(va_arg(*args, char *), char_count);
+	else if (sp == 'p')
+		return;
+	else if (sp == 'd' || sp == 'i')
+		ft_putnbr(va_arg(*args, int), char_count);
+	else if (sp == 'u')
+		return;
+	else if (sp == 'x')
+		return;
+	else if (sp == 'X')
+		return;
+	else if (sp == '%')
+		ft_putchar((char)va_arg(*args, int), char_count);
 }
 
-
-int main() {
-	ft_printf("hello world %x %c %x %% %a\n", 'c');
-	return(0);
-}
