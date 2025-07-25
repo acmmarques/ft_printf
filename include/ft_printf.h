@@ -6,7 +6,7 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:00:06 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/23 19:37:07 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:24:13 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,8 @@ char	*ft_strchr(const char *s, int c);
 void	ft_putchar(char c, size_t *char_count);
 void	ft_putstr(char *s, size_t *char_count);
 void	ft_putnbr(int nbr, size_t *char_count);
+void	ft_putunbr(unsigned int unbr, size_t *char_count);
+void	ft_puthex(unsigned long int nbr, size_t *char_count, char base_format);
+void	ft_putphex(void *address, size_t *char_count);
 
 #endif

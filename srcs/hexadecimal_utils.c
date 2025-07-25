@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hexadecimal_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/25 09:54:53 by andcardo          #+#    #+#             */
+/*   Updated: 2025/07/25 15:22:02 by andcardo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h" 
+
+static void	hex_calculation_and_printing(unsigned long int nbr, char* base, size_t *char_count);
+
+// TODO: Perceber se a puthex recebe um unsigned long int ou só um unsigned int.
+// 	 É importante perceber para usar esta função com pointers ou não.
+void	ft_puthex(unsigned long int nbr, size_t *char_count, char base_format)
+{
+	char *base;
+
+	if (base_format == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	hex_calculation_and_printing(nbr, base, char_count);
+}
+
+void	ft_putphex(void *address, size_t *char_count)
+{
+	if (!address)
+		return ft_putstr("(nil)", char_count);
+	ft_putchar('0', char_count);
+	ft_putchar('x', char_count);
+
+	ft_puthex((unsigned long int)address, char_count, 'x');
+}
+
+static void	hex_calculation_and_printing(unsigned long int nbr, char* base, size_t *char_count)
+{
+	if (nbr > 15)
+	{
+		hex_calculation_and_printing(nbr / 16, base, char_count);
+	}
+	ft_putchar(base[nbr % 16], char_count);
+}

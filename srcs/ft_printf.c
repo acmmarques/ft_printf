@@ -6,7 +6,7 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:59:14 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/23 19:37:15 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:24:18 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,18 @@ int	ft_printf(const char *format, ...)
 
 void static	handle_specifier(char sp, va_list *args, size_t *char_count)
 {
-
-	char *order = "cspdiuxX%";
 	if (sp == 'c')
 		ft_putchar((char)va_arg(*args, int), char_count); 
 	else if (sp == 's')
 		ft_putstr(va_arg(*args, char *), char_count);
 	else if (sp == 'p')
-		return;
+		ft_putphex(va_arg(*args, void *), char_count);
 	else if (sp == 'd' || sp == 'i')
 		ft_putnbr(va_arg(*args, int), char_count);
 	else if (sp == 'u')
-		return;
-	else if (sp == 'x')
-		return;
-	else if (sp == 'X')
-		return;
+		ft_putunbr(va_arg(*args, unsigned int), char_count);
+	else if (sp == 'x' || sp == 'X')
+		ft_puthex(va_arg(*args, unsigned int), char_count, sp);
 	else if (sp == '%')
 		ft_putchar((char)va_arg(*args, int), char_count);
 }

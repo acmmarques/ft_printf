@@ -51,7 +51,24 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)0);
 }
 
-void	ft_putnbr(int, size_t *char_count)
+void	ft_putnbr(int nbr, size_t *char_count)
 {
-	ft_printf("this is def a number");
+	long	long_nbr;
+
+	long_nbr = nbr;
+	if (nbr < 0)
+	{
+		ft_putchar('-', char_count);
+		long_nbr *= -1;
+	}
+	if (long_nbr > 9)
+		ft_putnbr(long_nbr / 10, char_count);
+	ft_putchar((char)(long_nbr % 10) + '0', char_count);
+}
+
+void	ft_putunbr(unsigned int unbr, size_t *char_count)
+{
+	if (unbr > 9)
+		ft_putunbr(unbr / 10, char_count);
+	ft_putchar((char)(unbr % 10) + '0', char_count);
 }
