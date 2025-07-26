@@ -6,7 +6,7 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:59:14 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/26 20:29:45 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/26 22:49:22 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void static	handle_specifier(char sp, va_list *args, size_t *char_count)
 	else if (sp == 'x' || sp == 'X')
 		ft_puthex(va_arg(*args, unsigned int), char_count, sp);
 	else if (sp == '%')
-		ft_putchar((char)va_arg(*args, int), char_count);
+		ft_putchar(sp, char_count);
 }
