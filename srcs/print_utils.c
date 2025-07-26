@@ -6,7 +6,7 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:58:36 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/23 19:37:50 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/26 20:32:24 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putstr(char *s, size_t *char_count)
 	if (!s)
 	{
 		*char_count += write(1, "(null)", 6);
-		return;
+		return ;
 	}
 	while (*s)
 	{

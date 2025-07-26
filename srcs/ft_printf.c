@@ -6,7 +6,7 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:59:14 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/25 14:24:18 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/26 20:29:45 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void static	handle_specifier(char specifier, va_list *args, size_t *char_count);
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	size_t	char_count;
 	size_t	i;
-	char *sp_list;
-
+	char	*sp_list;
 
 	char_count = 0;
 	i = 0;
@@ -33,9 +32,8 @@ int	ft_printf(const char *format, ...)
 			i++;
 			handle_specifier(format[i], &args, &char_count);
 		}
-		else {
+		else
 			ft_putchar(format[i], &char_count);
-		}
 		i++;
 	}
 	va_end(args);
@@ -45,7 +43,7 @@ int	ft_printf(const char *format, ...)
 void static	handle_specifier(char sp, va_list *args, size_t *char_count)
 {
 	if (sp == 'c')
-		ft_putchar((char)va_arg(*args, int), char_count); 
+		ft_putchar((char)va_arg(*args, int), char_count);
 	else if (sp == 's')
 		ft_putstr(va_arg(*args, char *), char_count);
 	else if (sp == 'p')
@@ -59,4 +57,3 @@ void static	handle_specifier(char sp, va_list *args, size_t *char_count)
 	else if (sp == '%')
 		ft_putchar((char)va_arg(*args, int), char_count);
 }
-
