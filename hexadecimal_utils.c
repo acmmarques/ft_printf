@@ -6,7 +6,7 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 09:54:53 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/26 20:31:54 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/26 23:24:48 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	hex_calc(unsigned long int nbr, char *base, size_t *char_count);
 
-// TODO: Perceber se a puthex recebe um unsigned long int ou só um unsigned int.
-// 	 É importante perceber para usar esta função com pointers ou não.
 void	ft_puthex(unsigned long int nbr, size_t *char_count, char base_format)
 {
 	char	*base;
