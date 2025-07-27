@@ -6,7 +6,7 @@
 #    By: andcardo <andcardo@student.42lisboa.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/26 22:12:53 by andcardo          #+#    #+#              #
-#    Updated: 2025/07/26 22:39:44 by andcardo         ###   ########.fr        #
+#    Updated: 2025/07/27 10:36:16 by andcardo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,9 @@ fclean: clean
 
 re: fclean all
 
-test: re
-	$(CC) $(TEST) $(NAME) -g -o exec
+test: 
+	@$(MAKE) -s re
+	@$(CC) $(TEST) $(NAME) -g -o exec
 	@./exec
 	@rm -f exec
 
