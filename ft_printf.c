@@ -6,13 +6,13 @@
 /*   By: andcardo <andcardo@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 15:59:14 by andcardo          #+#    #+#             */
-/*   Updated: 2025/07/26 22:49:22 by andcardo         ###   ########.fr       */
+/*   Updated: 2025/07/27 10:33:30 by andcardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void static	handle_specifier(char specifier, va_list *args, size_t *char_count);
+static void	handle_specifier(char specifier, va_list *args, size_t *char_count);
 
 int	ft_printf(const char *format, ...)
 {
@@ -21,6 +21,8 @@ int	ft_printf(const char *format, ...)
 	size_t	i;
 	char	*sp_list;
 
+	if (!format)
+		return (-1);
 	char_count = 0;
 	i = 0;
 	sp_list = "cspdiuxX%";
@@ -40,7 +42,7 @@ int	ft_printf(const char *format, ...)
 	return (char_count);
 }
 
-void static	handle_specifier(char sp, va_list *args, size_t *char_count)
+static void	handle_specifier(char sp, va_list *args, size_t *char_count)
 {
 	if (sp == 'c')
 		ft_putchar((char)va_arg(*args, int), char_count);
